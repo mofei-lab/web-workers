@@ -12,7 +12,7 @@ function fabonacci(n) {
 onmessage = function (val) {
     switch (val.data) {
         case 'start':
-            let result = fabonacci(42);
+            let result = fabonacci(43);
             postMessage(result);
     }
 }
