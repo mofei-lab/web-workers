@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>worker demo</title>
+</head>
+
+<body>
+    <div>
+        <h1>使用shareWorkder:</h1>
+    </div>
+    <button style="padding: 10px; margin: 10px 0;">biu~ 一下</button>
+    <div>
+        <span>一共Biu了 <span class="time">-</span> 下</span>
+
+    </div>
+
+    <script>
+        //
+        let button = document.querySelector('button');
+
+        let worker = new SharedWorker('sharedworkers.js');
+        worker.port.start();
+
+        let time;
+        button.addEventListener('click', function () {
+            worker.port.postMessage('start');
+        });
+
+        let timeDom = document.querySelector('.time');
+        worker.port.onmessage = function (val) {
+            timeDom.innerHTML = val.data
+        }
+    </script>
+</body>
+
+</html>
