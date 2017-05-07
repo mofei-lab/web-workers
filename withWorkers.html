@@ -27,17 +27,11 @@
         button.addEventListener('click', function () {
             time = new Date();
             worker.postMessage('start');
-
-            // fabonacci(43);
-            // 
         });
 
-        worker.onmessage = function (val) {
-            alert('计算结束，结果为' + val.data + '，用时' + (new Date() - time) + 'ms');
+        worker.onmessage = function (messageEvent) {
+            alert('计算结束，结果为' + messageEvent.data + '，用时' + (new Date() - time) + 'ms');
         }
-
-
-
 
         // 计时器
         let timeDom = document.querySelector('.time');

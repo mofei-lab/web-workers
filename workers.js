@@ -9,8 +9,8 @@ function fabonacci(n) {
     return fabonacci(n - 1) + fabonacci(n - 2);
 }
 
-onmessage = function (val) {
-    switch (val.data) {
+onmessage = function (messageEvent) {
+    switch (messageEvent.data) {
         case 'start':
             let result = fabonacci(42);
             postMessage(result);
